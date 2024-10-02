@@ -1,6 +1,5 @@
-package model;
+package util;
 
-import util.R;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -8,8 +7,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+
 public class DatabaseManager {
     private static Connection con;
+
 
     public static boolean conectar() throws ClassNotFoundException, SQLException, IOException {
         Properties configuration = new Properties();
@@ -25,13 +26,21 @@ public class DatabaseManager {
                 username, password);
 
         return con != null;
+
     }
 
-    public void desconectar() throws SQLException {
+    public static void desconectar() throws SQLException {
         con.close();
+
+    }
+
+    public static boolean existeConexion() {
+        return con != null;
+
     }
 
     public static Connection getCon() {
         return con;
+
     }
 }

@@ -2,7 +2,7 @@ package DAO;
 
 
 import model.Cliente;
-import model.DatabaseManager;
+import util.DatabaseManager;
 import model.Pedido;
 import java.sql.*;
 import java.util.ArrayList;
