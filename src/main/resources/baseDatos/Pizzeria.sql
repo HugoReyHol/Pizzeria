@@ -8,7 +8,8 @@ CREATE TABLE Clientes(
 	Nombre VARCHAR(15),
 	Telefono INT,
 	Correo VARCHAR(20),
-    Direccion VARCHAR(20)
+    Direccion VARCHAR(20),
+    Contrasena Varchar(64)
 
 );
 
