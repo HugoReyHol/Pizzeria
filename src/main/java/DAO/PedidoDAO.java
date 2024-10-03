@@ -11,7 +11,7 @@ import java.util.List;
 
 public class PedidoDAO {
 
-    public void guardarPedido(Pedido pedido) throws SQLException {
+    public static void guardarPedido(Pedido pedido) throws SQLException {
         String sql = "INSERT INTO Pedidos (cliente, pizza, cantidad, bebida) VALUES (?, ?, ?, ?)";
 
         PreparedStatement sentencia = DatabaseManager.getCon().prepareStatement(sql);
@@ -22,7 +22,7 @@ public class PedidoDAO {
         sentencia.executeUpdate();
     }
 
-    public void eliminarPedido(Pedido pedido) throws SQLException {
+    public static void eliminarPedido(Pedido pedido) throws SQLException {
         String sql = "DELETE FROM Pedidos WHERE IdPedido = ?";
 
         PreparedStatement sentencia = DatabaseManager.getCon().prepareStatement(sql);
@@ -30,7 +30,7 @@ public class PedidoDAO {
         sentencia.executeUpdate();
     }
 
-    public void modificarPedido(Pedido pedidoAntiguo, Pedido pedidoNuevo) throws SQLException {
+    public static void modificarPedido(Pedido pedidoAntiguo, Pedido pedidoNuevo) throws SQLException {
         String sql = "UPDATE Pedidos SET Cliente = ?, Pizza = ?, Cantidad = ?, Bebida = ? WHERE IdPedido = ?";
 
         PreparedStatement sentencia = DatabaseManager.getCon().prepareStatement(sql);
@@ -42,7 +42,7 @@ public class PedidoDAO {
         sentencia.executeUpdate();
     }
 
-    public List<Pedido> obtenerPedidos() throws SQLException {
+    public static List<Pedido> obtenerPedidos() throws SQLException {
         List<Pedido> pedidos = new ArrayList<>();
         String sql = "SELECT * FROM Pedidos";
 
@@ -65,7 +65,7 @@ public class PedidoDAO {
         return pedidos;
     }
 
-    public List<Pedido> obtenerPedidos(Cliente cliente) throws SQLException {
+    public static List<Pedido> obtenerPedidos(Cliente cliente) throws SQLException {
         List<Pedido> pedidos = new ArrayList<>();
         String sql = "SELECT * FROM Pedidos WHERE cliente = ?";
 

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ClienteDAO {
 
-    public void guardarCliente(Cliente cliente) throws SQLException {
+    public static void guardarCliente(Cliente cliente) throws SQLException {
         String sql = "INSERT INTO Clientes (nombre, contrasena) VALUES (?, ?)";
 
         PreparedStatement sentencia = DatabaseManager.getCon().prepareStatement(sql);
@@ -19,7 +19,7 @@ public class ClienteDAO {
         sentencia.executeUpdate();
     }
 
-    public void eliminarCliente(Cliente cliente) throws SQLException {
+    public static void eliminarCliente(Cliente cliente) throws SQLException {
         String sql = "DELETE FROM Clientes WHERE IdCliente = ?";
 
         PreparedStatement sentencia = DatabaseManager.getCon().prepareStatement(sql);
@@ -27,7 +27,7 @@ public class ClienteDAO {
         sentencia.executeUpdate();
     }
 
-    public void modificarCliente(Cliente clienteAntiguio, Cliente clienteNuevo) throws SQLException {
+    public static void modificarCliente(Cliente clienteAntiguio, Cliente clienteNuevo) throws SQLException {
         String sql = "UPDATE Clientes SET Nombre = ?, Contrasena = ? WHERE IdCliente = ?";
 
         PreparedStatement sentencia = DatabaseManager.getCon().prepareStatement(sql);
@@ -37,7 +37,7 @@ public class ClienteDAO {
         sentencia.executeUpdate();
     }
 
-    public List<Cliente> obtenerClientes() throws SQLException {
+    public static List<Cliente> obtenerClientes() throws SQLException {
         List<Cliente> clientes = new ArrayList<>();
         String sql = "SELECT * FROM Clientes";
 
@@ -56,7 +56,7 @@ public class ClienteDAO {
         return clientes;
     }
 
-    public Cliente obtenerCliente(int idCliente) throws SQLException {
+    public static Cliente obtenerCliente(int idCliente) throws SQLException {
         String sql = "SELECT * FROM Clientes WHERE IdCliente = ?";
 
         PreparedStatement sentencia = DatabaseManager.getCon().prepareStatement(sql);
@@ -76,11 +76,11 @@ public class ClienteDAO {
         return cliente;
     }
 
-    public Cliente obtenerCliente(String correo) throws SQLException {
-        String sql = "SELECT * FROM Clientes WHERE Correo = ?";
+    public static Cliente obtenerCliente(String nombre) throws SQLException {
+        String sql = "SELECT * FROM Clientes WHERE Nombre = ?";
 
         PreparedStatement sentencia = DatabaseManager.getCon().prepareStatement(sql);
-        sentencia.setString(1, correo);
+        sentencia.setString(1, nombre);
 
         ResultSet resultado = sentencia.executeQuery();
 

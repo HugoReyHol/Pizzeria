@@ -13,6 +13,8 @@ public class DatabaseManager {
 
 
     public static boolean conectar() throws ClassNotFoundException, SQLException, IOException {
+        if (con != null) return true;
+
         Properties configuration = new Properties();
         configuration.load(R.getProperties("database.properties"));
         String host = configuration.getProperty("host");
@@ -30,7 +32,7 @@ public class DatabaseManager {
     }
 
     public static void desconectar() throws SQLException {
-        con.close();
+        if (con != null) con.close();
 
     }
 
