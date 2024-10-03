@@ -11,14 +11,11 @@ import java.util.List;
 public class ClienteDAO {
 
     public void guardarCliente(Cliente cliente) throws SQLException {
-        String sql = "INSERT INTO Clientes (nombre, telefono, correo, dirreccion, contrasena) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Clientes (nombre, contrasena) VALUES (?, ?)";
 
         PreparedStatement sentencia = DatabaseManager.getCon().prepareStatement(sql);
         sentencia.setString(1, cliente.getNombre());
-        sentencia.setInt(2, cliente.getTelefono());
-        sentencia.setString(3, cliente.getCorreo());
-        sentencia.setString(4, cliente.getDireccion());
-        sentencia.setString(5, cliente.getContrasena());
+        sentencia.setString(2, cliente.getContrasena());
         sentencia.executeUpdate();
     }
 
@@ -31,15 +28,12 @@ public class ClienteDAO {
     }
 
     public void modificarCliente(Cliente clienteAntiguio, Cliente clienteNuevo) throws SQLException {
-        String sql = "UPDATE Clientes SET Nombre = ?,Telefono = ?, Correo = ?, Direccion = ?, Contrasena = ? WHERE IdCliente = ?";
+        String sql = "UPDATE Clientes SET Nombre = ?, Contrasena = ? WHERE IdCliente = ?";
 
         PreparedStatement sentencia = DatabaseManager.getCon().prepareStatement(sql);
         sentencia.setString(1, clienteNuevo.getNombre());
-        sentencia.setInt(2, clienteNuevo.getTelefono());
-        sentencia.setString(3, clienteNuevo.getCorreo());
-        sentencia.setString(4, clienteNuevo.getCorreo());
-        sentencia.setString(5, clienteNuevo.getContrasena());
-        sentencia.setInt(6, clienteAntiguio.getIdCliente());
+        sentencia.setString(2, clienteNuevo.getContrasena());
+        sentencia.setInt(3, clienteAntiguio.getIdCliente());
         sentencia.executeUpdate();
     }
 
@@ -54,10 +48,7 @@ public class ClienteDAO {
 
             cliente.setIdCliente(resultado.getInt(1));
             cliente.setNombre(resultado.getString(2));
-            cliente.setTelefono(resultado.getInt(3));
-            cliente.setCorreo(resultado.getString(4));
-            cliente.setDireccion(resultado.getString(5));
-            cliente.setContrasena(resultado.getString(6));
+            cliente.setContrasena(resultado.getString(3));
 
             clientes.add(cliente);
         }
@@ -78,10 +69,7 @@ public class ClienteDAO {
         if (resultado.next()) {
             cliente.setIdCliente(resultado.getInt(1));
             cliente.setNombre(resultado.getString(2));
-            cliente.setTelefono(resultado.getInt(3));
-            cliente.setCorreo(resultado.getString(4));
-            cliente.setDireccion(resultado.getString(5));
-            cliente.setContrasena(resultado.getString(6));
+            cliente.setContrasena(resultado.getString(3));
 
         }
 
@@ -101,10 +89,7 @@ public class ClienteDAO {
         if (resultado.next()) {
             cliente.setIdCliente(resultado.getInt(1));
             cliente.setNombre(resultado.getString(2));
-            cliente.setTelefono(resultado.getInt(3));
-            cliente.setCorreo(resultado.getString(4));
-            cliente.setDireccion(resultado.getString(5));
-            cliente.setContrasena(resultado.getString(6));
+            cliente.setContrasena(resultado.getString(3));
 
         } else {
             return null;

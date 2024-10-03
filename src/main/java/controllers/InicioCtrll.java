@@ -16,8 +16,12 @@ public class InicioCtrll {
 
 
     public void onIniciar(ActionEvent actionEvent) {
+
+
     }
 
     public void onRegistrarse(ActionEvent actionEvent) {
+
+
     }
 }
