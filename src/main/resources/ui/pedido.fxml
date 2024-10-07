@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <children>
+      <Label text="Pedido">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Separator prefWidth="200.0" />
+      <HBox spacing="20.0">
+         <children>
+            <VBox spacing="15.0">
+               <children>
+                  <Label text="Tipo pizza:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="entradaPizza" prefWidth="150.0" />
+               </children>
+            </VBox>
+            <VBox layoutX="104.0" layoutY="10.0" spacing="15.0">
+               <children>
+                  <Label text="Cantidad:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="entradaCantidad" prefWidth="50.0" />
+               </children>
+            </VBox>
+            <VBox layoutX="104.0" layoutY="10.0" spacing="15.0">
+               <children>
+                  <Label text="Bebida:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="entradaBebida" prefWidth="150.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Label text="Lista Pedidos">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ListView fx:id="listaPedidos" onMouseReleased="#onClick" prefHeight="150.0" />
+      <HBox alignment="TOP_CENTER" spacing="20.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#onGuardar" text="Guardar">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#onCambiar" text="Cambiar usuario">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#onSalir" text="Salir">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets top="15.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+
+
+</VBox>
