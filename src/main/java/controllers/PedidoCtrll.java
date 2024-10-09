@@ -98,11 +98,9 @@ public class PedidoCtrll implements Initializable {
         } catch (NumberFormatException e) {
             AlertUtil.mostrarInfo("La cantidad debe ser un numero entero");
             entradaCantidad.setText("");
-            return;
 
         } catch (SQLException e) {
             AlertUtil.mostrarInfo("No se ha podido modificar el pedido\n\n" + e.getMessage());
-            return;
 
         }
 

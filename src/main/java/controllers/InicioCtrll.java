@@ -33,7 +33,7 @@ public class InicioCtrll {
             return;
         }
 
-        Cliente cliente = null;
+        Cliente cliente;
         try {
             cliente = ClienteDAO.obtenerCliente(clienteEntrada.getNombre());
 
@@ -65,7 +65,7 @@ public class InicioCtrll {
             return;
         }
 
-        Cliente cliente = null;
+        Cliente cliente;
 
         try {
             cliente = ClienteDAO.obtenerCliente(clienteEntrada.getNombre());
