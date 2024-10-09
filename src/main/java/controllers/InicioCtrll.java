@@ -12,7 +12,6 @@ import model.Cliente;
 import org.apache.commons.codec.digest.DigestUtils;
 import util.AlertUtil;
 import util.R;
-
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -99,8 +98,7 @@ public class InicioCtrll {
         FXMLLoader fxmlLoader = new FXMLLoader(R.getUI("pedido.fxml"));
 
         // Pasa el cliente actual al siguiente controller
-        PedidoCtrll ctrll = new PedidoCtrll();
-        ctrll.setCliente(cliente);
+        PedidoCtrll ctrll = new PedidoCtrll(cliente);
 
         fxmlLoader.setController(ctrll);
 

@@ -60,12 +60,6 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "Pedido{" +
-                "idPedido=" + idPedido +
-                ", cliente=" + cliente +
-                ", pizza='" + pizza + '\'' +
-                ", cantidad=" + cantidad +
-                ", bebida='" + bebida + '\'' +
-                '}';
+        return "Pedido " + this.idPedido + ": " + this.cantidad + " pizzas " + this.pizza + " con " + this.bebida;
     }
 }

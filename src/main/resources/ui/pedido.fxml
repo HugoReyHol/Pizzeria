@@ -64,12 +64,12 @@
       <ListView fx:id="listaPedidos" onMouseReleased="#onClick" prefHeight="150.0" />
       <HBox alignment="TOP_CENTER" spacing="20.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#onGuardar" text="Guardar">
+            <Button mnemonicParsing="false" onAction="#onActualizar" text="Actualizar">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#onCambiar" text="Cambiar usuario">
+            <Button mnemonicParsing="false" onAction="#onNuevo" text="Nuevo">
                <font>
                   <Font size="18.0" />
                </font>

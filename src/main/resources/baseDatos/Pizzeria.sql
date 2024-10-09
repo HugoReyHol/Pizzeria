@@ -14,9 +14,9 @@ CREATE TABLE Clientes(
 CREATE TABLE Pedidos(
 	IdPedido INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     Cliente INT UNSIGNED,
-    Pizza VARCHAR(10),
+    Pizza enum('Barbacoa', '4 Quesos', 'Margarita'),
     Cantidad INT,
-    Bebida VARCHAR(10),    
+    Bebida enum('Agua', 'CocaCola', 'Te'),
     FOREIGN KEY (Cliente) REFERENCES Clientes(IdCliente)
 
 );
