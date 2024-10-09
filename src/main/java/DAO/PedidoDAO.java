@@ -49,12 +49,11 @@ public class PedidoDAO {
         PreparedStatement sentencia = DatabaseManager.getCon().prepareStatement(sql);
         ResultSet resultado = sentencia.executeQuery();
 
-        ClienteDAO clienteDAO = new ClienteDAO();
         while (resultado.next()) {
             Pedido pedido = new Pedido();
 
             pedido.setIdPedido(resultado.getInt(1));
-            pedido.setCliente(clienteDAO.obtenerCliente(resultado.getInt(2)));
+            pedido.setCliente(ClienteDAO.obtenerCliente(resultado.getInt(2)));
             pedido.setPizza(resultado.getString(3));
             pedido.setCantidad(resultado.getInt(4));
             pedido.setBebida(resultado.getString(5));
@@ -74,12 +73,11 @@ public class PedidoDAO {
 
         ResultSet resultado = sentencia.executeQuery();
 
-        ClienteDAO clienteDAO = new ClienteDAO();
         while (resultado.next()) {
             Pedido pedido = new Pedido();
 
             pedido.setIdPedido(resultado.getInt(1));
-            pedido.setCliente(clienteDAO.obtenerCliente(resultado.getInt(2)));
+            pedido.setCliente(ClienteDAO.obtenerCliente(resultado.getInt(2)));
             pedido.setPizza(resultado.getString(3));
             pedido.setCantidad(resultado.getInt(4));
             pedido.setBebida(resultado.getString(5));
