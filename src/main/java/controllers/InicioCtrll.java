@@ -1,6 +1,7 @@
 package controllers;
 
 import DAO.ClienteDAO;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,14 +26,21 @@ public class InicioCtrll {
     private PasswordField entradaContrasena;
 
 
-    public void onIniciar(ActionEvent actionEvent) throws SQLException, IOException {
+    public void onIniciar(ActionEvent actionEvent) {
         Cliente clienteEntrada = validarEntrada();
 
         if (clienteEntrada == null) {
             return;
         }
 
-        Cliente cliente = ClienteDAO.obtenerCliente(clienteEntrada.getNombre());
+        Cliente cliente = null;
+        try {
+            cliente = ClienteDAO.obtenerCliente(clienteEntrada.getNombre());
+
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+            return;
+        }
 
         if (cliente == null) {
             AlertUtil.mostrarInfo("No existe este usuario, pruebe a registrarse");
@@ -50,24 +58,30 @@ public class InicioCtrll {
 
     }
 
-    public void onRegistrarse(ActionEvent actionEvent) throws IOException, SQLException {
+    public void onRegistrarse(ActionEvent actionEvent) {
         Cliente clienteEntrada = validarEntrada();
 
         if (clienteEntrada == null) {
             return;
         }
 
-        Cliente cliente = ClienteDAO.obtenerCliente(clienteEntrada.getNombre());
+        Cliente cliente = null;
 
-        if (cliente != null) {
-            AlertUtil.mostrarInfo("Ese nombre ya esta registrado");
-            return;
+        try {
+            cliente = ClienteDAO.obtenerCliente(clienteEntrada.getNombre());
+
+            if (cliente != null) {
+                AlertUtil.mostrarInfo("Ese nombre ya esta registrado");
+                return;
+            }
+
+            ClienteDAO.guardarCliente(clienteEntrada);
+
+            cambiarEscena(clienteEntrada);
+
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
         }
-
-        ClienteDAO.guardarCliente(clienteEntrada);
-
-        cambiarEscena(clienteEntrada);
-
     }
 
     private Cliente validarEntrada() {
@@ -94,7 +108,7 @@ public class InicioCtrll {
         return cliente;
     }
 
-    private void cambiarEscena(Cliente cliente) throws IOException {
+    private void cambiarEscena(Cliente cliente) {
         FXMLLoader fxmlLoader = new FXMLLoader(R.getUI("pedido.fxml"));
 
         // Pasa el cliente actual al siguiente controller
@@ -104,7 +118,12 @@ public class InicioCtrll {
 
         // Cambia la escena
         Stage stage = (Stage) entradaNombre.getScene().getWindow();
-        stage.setScene(new Scene(fxmlLoader.load()));
+        try {
+            stage.setScene(new Scene(fxmlLoader.load()));
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+            Platform.exit();
+        }
 
     }
 }
