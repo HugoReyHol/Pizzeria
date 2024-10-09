@@ -70,7 +70,7 @@ public class PedidoDAO {
         String sql = "SELECT * FROM Pedidos WHERE cliente = ?";
 
         PreparedStatement sentencia = DatabaseManager.getCon().prepareStatement(sql);
-        sentencia.setInt(cliente.getIdCliente(), 1);
+        sentencia.setInt(1, cliente.getIdCliente());
 
         ResultSet resultado = sentencia.executeQuery();
 
