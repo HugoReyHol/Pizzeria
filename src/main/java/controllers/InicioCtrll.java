@@ -77,7 +77,7 @@ public class InicioCtrll {
 
             ClienteDAO.guardarCliente(clienteEntrada);
 
-            cambiarEscena(clienteEntrada);
+            cambiarEscena(ClienteDAO.obtenerCliente(clienteEntrada.getNombre()));
 
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());

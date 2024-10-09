@@ -87,6 +87,11 @@ public class PedidoCtrll implements Initializable {
         try {
             pedidoNuevo.setCantidad(Integer.parseInt(entradaCantidad.getText()));
 
+            if (pedidoNuevo.getCantidad() <= 0) {
+                AlertUtil.mostrarInfo("El numero de pizzas compradas debe ser mayor a 0");
+                return;
+            }
+
             PedidoDAO.modificarPedido(pedidoCargado, pedidoNuevo);
 
             pedidoCargado.setPizza(pedidoNuevo.getPizza());
@@ -115,6 +120,11 @@ public class PedidoCtrll implements Initializable {
 
         try {
             pedidoNuevo.setCantidad(Integer.parseInt(entradaCantidad.getText()));
+
+            if (pedidoNuevo.getCantidad() <= 0) {
+                AlertUtil.mostrarInfo("El numero de pizzas compradas debe ser mayor a 0");
+                return;
+            }
 
             PedidoDAO.guardarPedido(pedidoNuevo);
 
